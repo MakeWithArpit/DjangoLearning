@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-mz=32u(uaqbnd^r+7m=!cxa)1rpo%qisf53m_ozmvd=v=xqh)="
@@ -68,4 +69,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
+]
+
+# ADDED MANUALLY
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
 ]
