@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FrostCore — Gaming Hub</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       Variables & Reset
+       ========================= */
+    :root{
+      --bg-1: #02050a;
+      --bg-2: #0a1120;
+      --card: rgba(255,255,255,0.03);
+      --muted: rgba(220,235,255,0.65);
+      --accent: #00c6ff;      /* icy blue */
+      --accent-2:#0072ff;     /* deep frost blue */
+      --glass: rgba(255,255,255,0.04);
+      --radius: 14px;
+      --max-width: 1200px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter, system-ui, sans-serif;
+      background: radial-gradient(800px 600px at 10% 10%, rgba(0,198,255,0.08), transparent 40%),
+                  radial-gradient(800px 500px at 90% 90%, rgba(0,114,255,0.06), transparent 40%),
+                  linear-gradient(180deg,var(--bg-1), var(--bg-2));
+      color:#eaf6ff;
+      min-height:100vh;
+      -webkit-font-smoothing:antialiased;
+      padding:40px 20px;
+      display:flex;justify-content:center;
+    }
+
+    .container{width:100%;max-width:var(--max-width);display:flex;flex-direction:column;gap:28px;}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
+    .logo{
+      width:50px;height:50px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;
+      font-family:Orbitron,sans-serif;font-weight:700;font-size:18px;color:#011;
+      box-shadow:0 4px 20px rgba(0,198,255,0.2);
+    }
+    nav{display:flex;gap:18px;}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:10px;
+      transition:all .2s ease;
+    }
+    nav a:hover{color:var(--accent);transform:translateY(-2px)}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#011;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:0 6px 24px rgba(0,114,255,0.25);
+      transition:transform .2s ease;
+    }
+    .btn:hover{transform:translateY(-3px)}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.05);
+      padding:32px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:24px;
+      align-items:center;
+      box-shadow:0 8px 40px rgba(0,0,0,0.6);
+    }
+    .hero-left h1{
+      font-family:Orbitron,sans-serif;
+      font-size:46px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .tagline{color:var(--muted);margin:12px 0 20px;}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+    .stat-cards{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+    .stat{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:12px;
+      padding:12px 14px;
+      min-width:120px;
+    }
+    .stat .num{color:var(--accent);font-weight:700;font-size:18px;}
+    .stat .label{font-size:12px;color:var(--muted);}
+
+    .game-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.05);
+      display:flex;gap:12px;align-items:center;
+      padding:16px;
+    }
+    .cover{
+      width:140px;height:180px;border-radius:10px;
+      background:linear-gradient(135deg,rgba(0,198,255,0.3),rgba(0,114,255,0.25));
+      display:flex;align-items:center;justify-content:center;
+      font-family:Orbitron,sans-serif;font-weight:700;font-size:20px;color:#011;
+      box-shadow:0 8px 24px rgba(0,114,255,0.4);
+    }
+    .game-info h3{margin:0 0 6px 0;font-weight:700;}
+    .game-info p{margin:0 0 12px 0;color:var(--muted);font-size:13px;}
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(0,198,255,0.1);
+      border:1px solid rgba(0,198,255,0.25);
+      font-size:13px;
+      color:var(--accent);
+      font-weight:600;
+    }
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .feature{
+      background:var(--card);
+      padding:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+    .feature h4{margin:0 0 8px 0;font-size:16px;font-weight:700;color:var(--accent);}
+    .feature p{margin:0;color:var(--muted);font-size:13px;}
+
+    /* Lower */
+    .lower{display:grid;grid-template-columns:1fr 340px;gap:18px;}
+    .news-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.05);
+    }
+    .news-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.05);}
+    .news-item:last-child{border-bottom:0;}
+    .news-thumb{
+      width:80px;height:56px;border-radius:8px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#011;
+    }
+
+    footer{
+      display:flex;justify-content:space-between;align-items:center;
+      color:var(--muted);font-size:13px;margin-top:10px;
+    }
+
+    /* Responsive */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr);}
+      .lower{grid-template-columns:1fr;}
+    }
+    @media(max-width:700px){
+      .features{grid-template-columns:1fr;}
+      .hero-left h1{font-size:32px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="#" class="brand">
+        <div class="logo">FC</div>
+        <div>
+          <div style="font-weight:700">FrostCore</div>
+          <div style="font-size:12px;color:var(--muted)">Gaming Hub</div>
+        </div>
+      </a>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Games</a>
+        <a href="#">Tournaments</a>
+        <a href="#">Community</a>
+        <a href="#">Store</a>
+      </nav>
+      <a href="#" class="btn">Join Now</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Freeze the Competition</h1>
+        <p class="tagline">Dive into a world of esports, icy arenas, and global gaming events — powered by precision and style.</p>
+        <div class="cta-row">
+          <a href="#" class="btn">Play Now</a>
+          <a href="#" style="color:var(--muted);font-weight:600;text-decoration:none;">Learn More</a>
+        </div>
+        <div class="stat-cards">
+          <div class="stat"><div class="num">2.1M</div><div class="label">Active Players</div></div>
+          <div class="stat"><div class="num">18</div><div class="label">Ongoing Leagues</div></div>
+          <div class="stat"><div class="num">99%</div><div class="label">Server Uptime</div></div>
+        </div>
+      </div>
+
+      <aside class="game-card">
+        <div class="cover">GLACIER</div>
+        <div class="game-info">
+          <h3>Glacier Edge</h3>
+          <p>An icebound tactical shooter featuring dynamic snowstorms and adaptive terrain physics.</p>
+          <span class="pill">Multiplayer</span> <span class="pill">5v5</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h4>Frost Leagues</h4>
+        <p>Weekly ranked tournaments with rewards that chill your rivals.</p>
+      </div>
+      <div class="feature">
+        <h4>Smart Matchmaking</h4>
+        <p>Balanced lobbies ensure every match feels razor-sharp and fair.</p>
+      </div>
+      <div class="feature">
+        <h4>Custom Arenas</h4>
+        <p>Design your own frozen battlefield with snowstorm modifiers.</p>
+      </div>
+    </section>
+
+    <section class="lower">
+      <div class="news-card">
+        <h3>Latest Announcements</h3>
+        <div class="news-item">
+          <div class="news-thumb">V3</div>
+          <div><strong>Patch 3.0 Deployed</strong><br><small style="color:var(--muted)">New frost physics & weapons. Oct 2025</small></div>
+        </div>
+        <div class="news-item">
+          <div class="news-thumb">TL</div>
+          <div><strong>Winter League</strong><br><small style="color:var(--muted)">Register before Nov 1 — global ladder open.</small></div>
+        </div>
+        <div class="news-item">
+          <div class="news-thumb">UP</div>
+          <div><strong>Server Upgrade</strong><br><small style="color:var(--muted)">Latency reduced by 25% in EU region.</small></div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="news-card" style="text-align:center;">
+          <div style="font-weight:700">Server Status</div>
+          <div style="color:var(--accent);margin-top:6px;">All Systems Operational</div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div>&copy; FrostCore 2025</div>
+      <div>Made with ❄️ for gamers</div>
+    </footer>
+  </div>
+</body>
+</html>
