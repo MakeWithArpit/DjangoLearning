@@ -4,6 +4,7 @@ from mySite import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about/', views.about_us, name='about'),
-    path('', views.home_page, name='home'),
+    path('', views.home_page),
+    path('about/', views.about_us),
+    path('about/<int:num>', views.in_about_us), #dynamic url pattern. access via about/1 or about/2
 ]
