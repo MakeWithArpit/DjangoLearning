@@ -4,7 +4,14 @@ from django.shortcuts import render
 def home_page(request):
     data = {
         "title": "Home Page",
-        "welcome_message": "Welcome to our website!"
+        "welcome_message": "Welcome to our website!",
+        
+        "languages": ["Python", "JavaScript", "Java", "C++", "Ruby"],
+        "Students_details": [
+            {"name": "Alice", "age": 20, "city": "New York"},
+            {"name": "Bob", "age": 22, "city": "Los Angeles"},
+            {"name": "Charlie", "age": 23, "city": "Chicago"},
+        ]
     }
     return render(request,"index.html", data)
 
