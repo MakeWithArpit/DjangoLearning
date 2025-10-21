@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def home_page(request):
-    return render(request, "home.html")
+    return render(request, "index.html")
 
 def about_us(request):
     return HttpResponse("This is the About Us page of the website.")
