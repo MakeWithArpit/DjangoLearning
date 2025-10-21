@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
+    <title>{{ title }}</title>
+
     <style>
       /* Basic page style */
       body {
@@ -27,6 +28,29 @@
         text-align: center;
       }
       
+      /* Table styling */
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 60%;
+        background-color: #fff;
+      }
+      
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      
+      table th {
+        background-color: #007bff;
+        color: white;
+      }
+      
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      
       /* Button styling */
       button {
         background-color: #007bff;
@@ -35,6 +59,7 @@
         padding: 10px 20px;
         cursor: pointer;
         border-radius: 5px;
+        margin-top: 20px;
       }
       
       button:hover {
@@ -56,11 +81,29 @@
 
   <body>
     <header>
-      <h1>{{welcome_message}}</h1>
+      <h1>{{ welcome_message }}</h1>
     </header>
- 
+
     <section>
       <p>This is an example of linking a CSS file with HTML.</p>
+
+      {% for language in languages %}
+        <div>{{ language }}</div>
+      {% endfor %}
+
+      <table>
+        <tr>
+          <th>Name</th> <th>Age</th> <th>City</th>
+        </tr>
+
+        {% for student in Students_details %}
+          <tr>
+            <td>{{ student.name }}</td> <td>{{ student.age }}</td> <td>{{ student.city }}</td>
+          </tr>
+        {% endfor %}
+
+      </table>
+
       <button>Click Me!</button>
     </section>
 
