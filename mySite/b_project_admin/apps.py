@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class ProjectAdminConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'project_admin'
+    name = 'b_project_admin'
