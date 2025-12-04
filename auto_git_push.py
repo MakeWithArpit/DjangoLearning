@@ -3,58 +3,92 @@ import time
 import subprocess
 from datetime import datetime
 
-# ---- CONFIG ----
-CHECK_INTERVAL = 5  # seconds
-REPO_PATH = r"D:\GitProject\DjangoLearning"   # <-- apna repo path daalein
+# ------------ CONFIG ------------
+REPO_PATH = r"D:\GitProject\DjangoLearning"  # your repo path
+CHECK_INTERVAL = 60  # seconds
+# --------------------------------
 
-def run_command(command):
-    result = subprocess.run(command, shell=True, cwd=REPO_PATH, capture_output=True, text=True)
+def run(cmd):
+    """Run a git command and return stdout, stderr."""
+    result = subprocess.run(
+        cmd,
+        cwd=REPO_PATH,
+        text=True,
+        capture_output=True,
+        shell=True
+    )
     return result.stdout.strip(), result.stderr.strip()
 
-def has_changes():
-    stdout, _ = run_command("git status --porcelain")
-    return bool(stdout)
-
 def get_changed_files():
-    stdout, _ = run_command("git diff --name-only")
-    return stdout.splitlines()
+    """Detect staged + unstaged + untracked files."""
+    stdout, _ = run("git status --porcelain")
+    files = []
+    for line in stdout.splitlines():
+        if line.strip():
+            files.append(line[3:])
+    return files
 
-def generate_commit_message():
+def generate_commit_message(files):
+    c = len(files)
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    if c == 1:
+        return f"Updated {files[0]}"
+    if c <= 3:
+        return "Modified: " + ", ".join(files)
+    return f"Updated {c} files on {ts}"
+
+def get_current_branch():
+    stdout, _ = run("git rev-parse --abbrev-ref HEAD")
+    return stdout.strip()
+
+def commit_and_push():
     files = get_changed_files()
     if not files:
-        return None
-    if len(files) == 1:
-        return f"Updated {files[0]}"
-    elif len(files) <= 3:
-        return "Modified " + ", ".join(files)
-    else:
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        return f"Updated {len(files)} files on {timestamp}"
-
-def auto_commit_and_push():
-    commit_msg = generate_commit_message()
-    if not commit_msg:
+        print("⏳ No changes found.")
         return
 
-    print(f"\n🔍 Changes detected. Committing: '{commit_msg}'")
-    run_command("git add .")
-    run_command(f'git commit -m "{commit_msg}"')
-    stdout, stderr = run_command("git push")
+    print(f"🔍 {len(files)} change(s) detected.")
 
-    if "error" in stderr.lower() or "fatal" in stderr.lower():
-        print(f"⚠️ Push error: {stderr}")
+    # Stage all changes
+    print("📌 Staging files...")
+    run("git add -A")
+
+    # Prepare commit message
+    commit_msg = generate_commit_message(files)
+    print("📝 Commit message:", commit_msg)
+
+    # Commit
+    stdout, stderr = run(f'git commit -m "{commit_msg}"')
+    if "nothing to commit" in stdout.lower():
+        print("⚠ Nothing new to commit.")
+        return
+    print("✅ Commit done.")
+
+    # Detect branch
+    branch = get_current_branch()
+    if not branch:
+        print("❌ Could not detect branch.")
+        return
+
+    # Push
+    print(f"🚀 Pushing to origin/{branch} ...")
+    stdout, stderr = run(f"git push origin {branch}")
+
+    if stderr:
+        print("⚠ Git Error:", stderr)
     else:
-        print(f"✅ Pushed successfully!\n{stdout}")
+        print("🎉 Push successful!")
 
 def main():
-    print(f"🚀 Auto Git Push started for repo: {REPO_PATH}")
+    print("🚀 Auto Git Sync Started (checks every 1 minute)...")
     while True:
-        if has_changes():
-            auto_commit_and_push()
+        commit_and_push()
+        print("⏲ Waiting 1 minute...\n")
         time.sleep(CHECK_INTERVAL)
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n🛑 Auto Git Push stopped manually.")
+        print("\n🛑 Stopped manually.")
