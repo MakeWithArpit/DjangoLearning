@@ -5,5 +5,5 @@ def home(request):
     return HttpResponse("Welcome to the authentication home page!")
 
 def login(request):
-    return render(request, 'login1.html')
+    return render(request, '1login.html')
 
