@@ -5,6 +5,6 @@ def home(request):
     return HttpResponse("Welcome to the authentication home page!")
 
 def login(request):
-    return render(request, 'loginn.html')
+    return render(request, 'index.html')
 
 # Create your views here.
