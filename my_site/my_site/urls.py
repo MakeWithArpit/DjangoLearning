@@ -4,6 +4,6 @@ from authenticationn.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
-    path('login', login, name='login'),
+    path('', auth_home, name='auth_home'),
+    path('login', auth_login, name='auth_login'),
 ]
