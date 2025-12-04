@@ -84,7 +84,7 @@ def main():
     print("🚀 Auto Git Sync Started (checks every 1 minute)...")
     while True:
         commit_and_push()
-        print("⏲ Waiting 1 minute...\n")
+        print("⏲ Waiting 10 minute...\n")
         time.sleep(CHECK_INTERVAL)
 
 if __name__ == "__main__":
