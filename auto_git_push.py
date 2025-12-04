@@ -5,7 +5,7 @@ from datetime import datetime
 
 # ------------ CONFIG ------------
 REPO_PATH = r"D:\GitProject\DjangoLearning"  # your repo path
-CHECK_INTERVAL = 60  # seconds
+CHECK_INTERVAL = 600  # seconds
 # --------------------------------
 
 def run(cmd):
