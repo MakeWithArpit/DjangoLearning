@@ -12,5 +12,18 @@
     {%for i in course_list%}
     {{forloop.counter}} . {{i}}<br>
     {% endfor %}
+
+    <table align="center", border="1", cellpadding="10", cellspacing="0">
+        <thead align="center", border="1", cellpadding="10", cellspacing="0">
+            <tr>Name</tr> <tr>Age</tr>
+        </thead>
+        <tbody>
+            {% for sut in student_list %}
+            <tr>
+                <td>{{sut.name}}</td> <td>{{sut.age}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
