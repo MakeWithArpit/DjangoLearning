@@ -9,6 +9,8 @@
 <body>
     <h1 class="text-center">Welcome to the Authentication Home Page</h1>
     <hr>
-
+    {%for i in course_list%}
+    {{forloop.counter}} . {{i}}<br>
+    {% endfor %}
 </body>
 </html>
