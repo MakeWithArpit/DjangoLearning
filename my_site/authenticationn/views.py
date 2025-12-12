@@ -22,3 +22,6 @@ def auth_login(request):
 def auth_register(request):
     return render(request, 'authentication/register_page/register.html')
 
+def auth_forget(request):
+    return render(request, 'authentication/forgot_page/forgot.html')
+
