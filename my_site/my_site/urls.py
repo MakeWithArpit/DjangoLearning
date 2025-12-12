@@ -4,11 +4,11 @@ from authenticationn.views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('', login, name='login'),
-    path('', register, name='register'),
-    path('', forgot, name='forgot'),
-    path('', contact, name='contact'),
-    path('', about, name='about'),
+    path('/login', login, name='login'),
+    path('/register', register, name='register'),
+    path('/forgot', forgot, name='forgot'),
+    path('/contact', contact, name='contact'),
+    path('/about', about, name='about'),
 
     path('admin/', admin.site.urls),
 ]
