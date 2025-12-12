@@ -14,14 +14,5 @@ def auth_home(request):
     #     ],
 
     # }
-    return render(request, 'home/index.html')
-
-def auth_login(request):
-    return render(request, 'authentication/login_page/login.html')
-
-def auth_register(request):
-    return render(request, 'authentication/register_page/register.html')
-
-def auth_forgot(request):
-    return render(request, 'authentication/forgot_page/forgot.html')
+    return render(request, 'index.html')
 
