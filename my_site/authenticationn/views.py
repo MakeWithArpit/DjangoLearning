@@ -17,5 +17,5 @@ def auth_home(request):
     return render(request, 'home/index.html')
 
 def auth_login(request):
-    return render(request, 'login_page/login.html')
+    return render(request, 'authentication/login_page/login.html')
 
