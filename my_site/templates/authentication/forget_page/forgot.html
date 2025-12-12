@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - GPS Tracker</title>
+    <link rel="stylesheet" href="forgot.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>🌍 GPS Tracker</h1>
+            <p>Reset Your Password</p>
+        </div>
+
+        <div class="step-indicator">
+            <div class="step-line"></div>
+            <div class="step active" id="step1Indicator">1</div>
+            <div class="step" id="step2Indicator">2</div>
+            <div class="step" id="step3Indicator">3</div>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <!-- Step 1: Verify User ID -->
+        <div class="form-step active" id="step1">
+            <div class="info-box">
+                Enter your User ID to begin the password recovery process.
+            </div>
+
+            <form id="step1Form">
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" name="userId" placeholder="Enter your user ID" required>
+                </div>
+
+                <button type="submit" class="btn">Continue</button>
+            </form>
+        </div>
+
+        <!-- Step 2: Verify Security Question -->
+        <div class="form-step" id="step2">
+            <div class="info-box">
+                Answer your security question to verify your identity.
+            </div>
+
+            <form id="step2Form">
+                <div class="form-group">
+                    <label for="securityQuestion">Security Question</label>
+                    <select id="securityQuestion" name="securityQuestion" disabled>
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="securityAnswer">Your Answer</label>
+                    <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Enter your answer" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToStep(1)">Back</button>
+                    <button type="submit" class="btn">Verify</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 3: Set New Password -->
+        <div class="form-step" id="step3">
+            <div class="info-box">
+                Create a new strong password for your account.
+            </div>
+
+            <form id="step3Form">
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+                        <span class="toggle-password" onclick="togglePassword('newPassword')">SHOW</span>
+                    </div>
+                    <div class="strength-meter">
+                        <div class="strength-meter-fill" id="strengthMeter"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" required>
+                        <span class="toggle-password" onclick="togglePassword('confirmPassword')">SHOW</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Reset Password</button>
+            </form>
+        </div>
+
+        <div class="links">
+            <a href="login.html">Back to Login</a>
+        </div>
+    </div>
+
+    <script src="forgot.js"></script>
+</body>
+</html>
