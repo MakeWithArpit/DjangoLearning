@@ -19,3 +19,6 @@ def auth_home(request):
 def auth_login(request):
     return render(request, 'authentication/login_page/login.html')
 
+def auth_register(request):
+    return render(request, 'authentication/register_page/register.html')
+
