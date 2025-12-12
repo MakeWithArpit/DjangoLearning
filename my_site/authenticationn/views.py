@@ -4,6 +4,7 @@ from django.http import HttpResponse
 def auth_home(request):
     data = {
         "title" : "Authentication Home",
+        
         "course_list" : ["Django", "Flask", "FastAPI", "Tornado"],
 
         "student_list" : [
@@ -11,10 +12,10 @@ def auth_home(request):
             {"name": "Bob", "age": 22},
             {"name": "Charlie", "age": 23},
         ],
-        
+
     }
     return render(request, 'index.html', data)
 
 def auth_login(request):
-    return render(request, '1login.html')
+    return render(request, 'login_page/login.html')
 
