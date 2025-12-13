@@ -14,6 +14,12 @@ def forgot(request):
     return render(request, 'forgot-password.html')
 
 def contact(request):
+    try:
+        print(f"name    :    {request.GET['name']}")
+        print(f"Email   :    {request.GET['email']}")
+        print(f"Message :    {request.GET['message']}")
+    except:
+        pass    
     return render(request, 'contact.html')
 
 def about(request):
