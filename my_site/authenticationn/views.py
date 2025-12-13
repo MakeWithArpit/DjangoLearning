@@ -19,10 +19,10 @@ def forgot(request):
 
 
 def contact(request):
-    if request.method == "GET":
-        name = request.GET.get("name")
-        email = request.GET.get("email")
-        message = request.GET.get("message")
+    
+        name = request.GET['name']
+        email = request.GET['email']
+        message = request.GET['message']
 
         if name and email and message:
             print("Name    :", name)
