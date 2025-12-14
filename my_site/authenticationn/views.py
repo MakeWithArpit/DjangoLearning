@@ -19,16 +19,17 @@ def forgot(request):
 
 
 def contact(request):
-    name = request.GET.get("naMe")
-    email = request.GET.get("emaIl")
-    message = request.GET.get("messaGe")
+    if request.method == "POST":
+        name = request.POST["naMe"]
+        email = request.POST["emaIl"]
+        message = request.POST["messaGe"]
 
-    if name and email and message:
         print(f"Your name is {name}")
         print(f"Your email is {email}")
         print(f"Your message is {message}")
-        
+
     return render(request, "contact.html")
+
 
 def about(request):
     return render(request, "about.html")

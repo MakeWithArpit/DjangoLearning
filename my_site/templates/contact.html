@@ -22,24 +22,27 @@
             <h2>Contact Us</h2>
             <p>Have questions about our milk, eggs, or fish?</p>
             <br>
-            <form method="get">
+            <form method="post">
+                {% csrf_token %}
+            
                 <div class="form-group">
                     <label for="val1">Name</label>
-                    <input type="text" id="val1" placeholder="Your Name" name="naMe" required>
+                    <input type="text" id="val1" name="naMe" required>
                 </div>
 
                 <div class="form-group">
                     <label for="val2">Email</label>
-                    <input type="email" id="val2" name = "emaIl" placeholder="Your Email" required>
+                    <input type="email" id="val2" name="emaIl" required>
                 </div>
 
                 <div class="form-group">
                     <label for="val3">Message</label>
-                    <textarea rows="5" id="val3" name="messaGe" placeholder="How can we help you?" required></textarea>
+                    <textarea id="val3" name="messaGe" rows="5" required></textarea>
                 </div>
 
                 <button type="submit" class="btn">Send Message</button>
             </form>
+
         </div>
     </main>
 
