@@ -19,16 +19,6 @@ def forgot(request):
 
 
 def contact(request):
-    
-        name = request.GET['name']
-        email = request.GET['email']
-        message = request.GET['message']
-
-        if name and email and message:
-            print("Name    :", name)
-            print("Email   :", email)
-            print("Message :", message)
-        print("Contact form submitted.")
     return render(request, "contact.html")
 
 
