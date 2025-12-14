@@ -19,12 +19,12 @@ def forgot(request):
 
 
 def contact(request):
+    # print(f"your name is {request.GET["naMe"]} \nyour email is {request.GET["emaIl"]}\nyour message is {request.GET["messaGe"]}")
     return render(request, "contact.html")
-
 
 def about(request):
     return render(request, "about.html")
 
 def file(request):
-
+    print(f"first value is {request.GET["value1"]} and second value is {request.GET["value2"]}")
     return render(request, "file.html")
