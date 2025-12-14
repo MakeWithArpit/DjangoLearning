@@ -20,9 +20,9 @@ def forgot(request):
 
 def contact(request):
     try:
-        name = request.POST["val1"]
-        email = request.POST["val2"]
-        message = request.POST["val3"]
+        name = request.POST["naMe"]
+        email = request.POST["emaIl"]
+        message = request.POST["messaGe"]
 
         print(f"Your name is {name}")
         print(f"Your email is {email}")
