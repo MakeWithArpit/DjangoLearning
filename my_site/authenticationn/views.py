@@ -26,4 +26,5 @@ def about(request):
     return render(request, "about.html")
 
 def file(request):
+
     return render(request, "file.html")
