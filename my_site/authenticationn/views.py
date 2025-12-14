@@ -19,14 +19,16 @@ def forgot(request):
 
 
 def contact(request):
-    if request.method == "POST":
-        name = request.POST["naMe"]
-        email = request.POST["emaIl"]
-        message = request.POST["messaGe"]
+    try:
+        name = request.POST["val1"]
+        email = request.POST["val2"]
+        message = request.POST["val3"]
 
         print(f"Your name is {name}")
         print(f"Your email is {email}")
         print(f"Your message is {message}")
+    except:
+        pass
 
     return render(request, "contact.html")
 
