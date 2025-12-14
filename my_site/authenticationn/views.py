@@ -19,9 +19,9 @@ def forgot(request):
 
 
 def contact(request):
-    data = {"name": "", 
+    data = {"namee": "", 
             "email": "", 
-            "message": ""
+            "massage": ""
             }
 
     try:
@@ -29,9 +29,9 @@ def contact(request):
         email = request.POST["emaIl"]
         message = request.POST["messaGe"]
 
-        data["name"] = name
+        data["namee"] = name
         data["email"] = email   
-        data["message"] = message
+        data["massage"] = message
     except:
         pass
 
