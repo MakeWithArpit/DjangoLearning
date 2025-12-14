@@ -19,7 +19,7 @@ def forgot(request):
 
 
 def contact(request):
-    print(f"your name is {request.GET.get("naMe")} \nyour email is {request.GET["emaIl"]}\nyour message is {request.GET["messaGe"]}")
+    print(f"your name is {request.GET.get("naMe")} \nyour email is {request.GET.get("emaIl")}\nyour message is {request.GET.get("messaGe")}")
     return render(request, "contact.html")
 
 def about(request):
