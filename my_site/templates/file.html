@@ -9,7 +9,10 @@
 </head>
 <body>
 
-    <form method="get">
+    <form method="post">
+
+        {% csrf_token %}
+
         <label for="value1">Value 1</label>
         <input type="text" id="value1" name="value1" required>
 

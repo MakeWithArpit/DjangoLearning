@@ -35,5 +35,10 @@ def about(request):
     return render(request, "about.html")
 
 def file(request):
-    print(f"first value is {request.GET["value1"]} and second value is {request.GET["value2"]}")
+    try:
+        value1 = request.POST["value1"]
+        value2 = request.POST["value2"]
+        print(f"Value 1: {value1}, Value 2: {value2}")
+    except:
+        pass
     return render(request, "file.html")
