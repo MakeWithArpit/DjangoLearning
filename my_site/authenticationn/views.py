@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .code import *
 
+data = {} 
 
 def home(request):
     return render(request, "index.html")
@@ -30,8 +31,10 @@ def about(request):
 def odd(request):
     if request.method == "POST":
         v = int(request.POST.get('value'))
+        print(v)
+        result = odd_even_code(v)
+        data['result'] = result
+        data['value'] = v
         return redirect('odd')
-    return render(request, 
-                  "odd.html", 
-                  {'result' : odd_even_code(v), 'value': v},
-                  )
+    print(request.POST.get('value'))
+    return render(request, "odd.html", data)
