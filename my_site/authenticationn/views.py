@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .code import *
 
+data = {} 
+
 def home(request):
-    a()  # Call function a from code.py
     return render(request, "index.html")
 
 
@@ -25,3 +26,9 @@ def contact(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def odd(request):
+    result = odd_even_code()
+    data['result'] = result
+    return render(request, "odd.html", data)

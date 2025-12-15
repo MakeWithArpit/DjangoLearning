@@ -10,5 +10,7 @@ urlpatterns = [
     path('contact', contact, name='contact'),
     path('about', about, name='about'),
 
+    path('odd', odd, name='odd'),
+
     path('admin/', admin.site.urls),
 ]
