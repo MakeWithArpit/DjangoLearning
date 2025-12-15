@@ -10,7 +10,5 @@ urlpatterns = [
     path('contact', contact, name='contact'),
     path('about', about, name='about'),
 
-    path('file', file, name='file'),
-
     path('admin/', admin.site.urls),
 ]

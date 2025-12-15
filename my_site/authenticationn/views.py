@@ -19,33 +19,8 @@ def forgot(request):
 
 
 def contact(request):
-    data = {"namee": "", 
-            "email": "", 
-            "massage": ""
-            }
-
-    try:
-        name = request.POST["naMe"]
-        email = request.POST["emaIl"]
-        message = request.POST["messaGe"]
-
-        data["namee"] = name
-        data["email"] = email   
-        data["massage"] = message
-    except:
-        pass
-
-    return render(request, "contact.html", data)
+    return render(request, "contact.html")
 
 
 def about(request):
     return render(request, "about.html")
-
-def file(request):
-    try:
-        value1 = request.POST["value1"]
-        value2 = request.POST["value2"]
-        print(f"Value 1: {value1}, Value 2: {value2}")
-    except:
-        pass
-    return render(request, "file.html")
