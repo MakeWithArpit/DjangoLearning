@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .code import *
 
 def home(request):
+    a()  # Call function a from code.py
     return render(request, "index.html")
 
 
