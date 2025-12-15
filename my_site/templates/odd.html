@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <h1>Odd or Even Checker</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="value">Enter a number:</label>
+            <input type="number" id="value" name="value" required>
+            <input type="submit" value="Check">
+        </form>
+        {% if result %}
+            <h2>The number is {{ result }}.</h2>
+        {% endif %}
+    </body>
+</html>

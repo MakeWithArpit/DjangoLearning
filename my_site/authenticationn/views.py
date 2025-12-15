@@ -29,6 +29,6 @@ def about(request):
 
 
 def odd(request):
-    result = odd_even_code()
+    result = odd_even_code(int(request.POST["value"]))
     data['result'] = result
     return render(request, "odd.html", data)
