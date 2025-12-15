@@ -31,9 +31,9 @@ def about(request):
 def odd(request):
     if request.method == "POST":
         v = int(request.POST.get('value'))
+        print(v)
         result = odd_even_code(v)
         data['result'] = result
         data['value'] = v
         return redirect('odd')
-    print(request.POST.get('value'))
     return render(request, "odd.html", data)
