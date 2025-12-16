@@ -59,9 +59,6 @@ DATABASES = {
         'PASSWORD': 'UP25-9904399501',
         'HOST': 'localhost',
         'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            }
     }
 }
 
