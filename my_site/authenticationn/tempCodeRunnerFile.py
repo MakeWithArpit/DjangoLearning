@@ -1,4 +1,6 @@
-
-def file(request):
-    print(f"first value is {request.GET["value1"]} and second value is {request.GET["value2"]}")
-    return render(request, "file.html")
+def odd_even_code(value):
+#     v = int(value)
+#     if v % 2 == 0:
+#         return "Even"
+#     else:
+#         return "Odd"
